@@ -15,7 +15,7 @@ data class AbsencesRq @JvmOverloads constructor(
     val interval: IntervalType? = null,
     val statusFilter: List<StatusFilter> = emptyList()
 ) {
-    val count = true
+    val count = false
 }
 
 @Serializable
