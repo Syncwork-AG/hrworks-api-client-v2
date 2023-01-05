@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "de.syncwork"
-version = "1.0-SNAPSHOT"
+version = "0.0.1-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -42,4 +42,25 @@ tasks.withType<KotlinCompile> {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+tasks {
+    compileKotlin {
+        kotlinOptions.jvmTarget = "1.8"
+    }
+    compileTestKotlin {
+        kotlinOptions.jvmTarget = "1.8"
+    }
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "de.syncwork"
+            artifactId = "hrworks-api-client-v2"
+            version = "0.0.1-SNAPSHOT"
+
+            from(components["java"])
+        }
+    }
 }
