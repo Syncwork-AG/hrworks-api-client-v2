@@ -1,3 +1,5 @@
+package de.syncwork.hrworks
+
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.engine.java.*
@@ -11,10 +13,10 @@ import io.ktor.client.request.*
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
 import kotlinx.serialization.json.Json
-import core.AuthCredentials
-import core.TokenInfo
-import endpoints.HrWorksBlockingEndpoints
-import endpoints.HrWorksEndpoints
+import de.syncwork.hrworks.core.AuthCredentials
+import de.syncwork.hrworks.core.TokenInfo
+import de.syncwork.hrworks.endpoints.HrWorksBlockingEndpoints
+import de.syncwork.hrworks.endpoints.HrWorksEndpoints
 
 class HrWorksClient @JvmOverloads constructor(
     apiKey: String,

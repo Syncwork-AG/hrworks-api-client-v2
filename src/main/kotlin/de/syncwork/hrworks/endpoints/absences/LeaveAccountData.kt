@@ -1,4 +1,4 @@
-package endpoints.absences
+package de.syncwork.hrworks.endpoints.absences
 
 import io.ktor.resources.*
 import kotlinx.datetime.LocalDate

@@ -1,4 +1,4 @@
-package endpoints.general
+package de.syncwork.hrworks.endpoints.general
 
 import io.ktor.resources.Resource
 import kotlinx.serialization.Serializable

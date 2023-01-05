@@ -1,6 +1,6 @@
-package endpoints.absences
+package de.syncwork.hrworks.endpoints.absences
 
-import endpoints.persons.PersonBaseData
+import de.syncwork.hrworks.endpoints.persons.PersonBaseData
 import io.ktor.resources.*
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.Serializable

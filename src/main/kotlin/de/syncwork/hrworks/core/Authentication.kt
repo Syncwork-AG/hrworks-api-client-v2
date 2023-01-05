@@ -1,4 +1,4 @@
-package core
+package de.syncwork.hrworks.core
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

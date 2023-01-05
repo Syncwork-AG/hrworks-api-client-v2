@@ -1,4 +1,6 @@
-package endpoints.absences
+@file:Suppress("unused")
+
+package de.syncwork.hrworks.endpoints.absences
 
 import io.ktor.resources.*
 import kotlinx.serialization.Serializable

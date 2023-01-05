@@ -1,8 +1,8 @@
-package endpoints
+package de.syncwork.hrworks.endpoints
 
-import endpoints.absences.*
-import endpoints.general.HolidaysRq
-import endpoints.persons.PersonsRq
+import de.syncwork.hrworks.endpoints.absences.*
+import de.syncwork.hrworks.endpoints.general.HolidaysRq
+import de.syncwork.hrworks.endpoints.persons.PersonsRq
 import io.ktor.client.call.*
 import io.ktor.client.plugins.resources.*
 import kotlinx.coroutines.runBlocking

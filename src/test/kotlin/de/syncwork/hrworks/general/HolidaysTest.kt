@@ -1,4 +1,7 @@
-import endpoints.general.HolidaysRq
+package de.syncwork.hrworks.general
+
+import de.syncwork.hrworks.AbstractHrWorksTest
+import de.syncwork.hrworks.endpoints.general.HolidaysRq
 import kotlinx.coroutines.runBlocking
 import strikt.api.expectThat
 import strikt.assertions.containsKeys

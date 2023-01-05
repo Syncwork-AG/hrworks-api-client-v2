@@ -1,20 +1,34 @@
-import endpoints.absences.*
+package de.syncwork.hrworks.absences
+
+import de.syncwork.hrworks.AbstractHrWorksTest
+import de.syncwork.hrworks.endpoints.absences.AbsencesRq
+import de.syncwork.hrworks.endpoints.absences.LeaveAccountDataRq
+import de.syncwork.hrworks.endpoints.absences.SickLeavesRq
 import kotlinx.coroutines.runBlocking
-import strikt.api.expectThat
 import kotlinx.datetime.LocalDate
+import strikt.api.expectThat
 import strikt.assertions.*
-import java.util.random.RandomGeneratorFactory.all
 import kotlin.test.Test
 
 class AbsencesTest : AbstractHrWorksTest() {
     @Test
-    fun `response of getAbsences will have keys CHE, AUT and DEU`(): Unit = runBlocking {
+    fun `response of getAbsences will have the requested person and date boundaries`(): Unit = runBlocking {
+        val testPersons = listOf("1")
+        val testBeginDate = LocalDate.parse("2022-01-01")
+        val testEndDate = LocalDate.parse("2022-12-31")
         val result = client.getAbsences(
             AbsencesRq(
-                LocalDate.parse("2022-01-01"), LocalDate.parse("2022-12-31"), usePersonnelNumbers = true
+                testBeginDate, testEndDate, persons = testPersons, usePersonnelNumbers = true
             )
         )
-        expectThat(result).containsKeys("CHE", "AUT", "DEU")
+        expectThat(result).containsKeys(*testPersons.toTypedArray()).and {
+            get(testPersons.first()).withNotNull {
+                all {
+                    get { beginDate }.isEqualTo(testBeginDate)
+                    get { endDate }.isEqualTo(testEndDate)
+                }
+            }
+        }
     }
 
     @Test
