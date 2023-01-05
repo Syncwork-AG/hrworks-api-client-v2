@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    application
+    java
     kotlin("jvm") version "1.7.20"
     kotlin("plugin.serialization") version "1.7.20"
     `maven-publish`
@@ -16,6 +16,7 @@ repositories {
 }
 
 dependencies {
+    implementation(kotlin("stdlib-jdk8"))
     // ktor
     val ktorVersion = "2.2.1"
     implementation("io.ktor:ktor-client-core-jvm:$ktorVersion")
