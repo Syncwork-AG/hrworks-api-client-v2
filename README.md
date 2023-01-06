@@ -1,4 +1,4 @@
-# HRWorks-Api-Client 
+# HRWorks-Api-Client V2
 
 This client provides access to the HRworks API V2 and is written in Kotlin but can be used in all JVM Languages. Currently, it is published on jitpack.io and can be used by simply adding the dependency to your project.
 
@@ -28,7 +28,7 @@ and then adding add the implementation dependency
 ``` groovy
 dependencies {
     ...
-    implementation 'com.github.Syncwork-AG:hrworks-api-client-v2:[[[tbd]]]'
+    implementation 'com.github.Syncwork-AG:hrworks-api-client-v2:[version]'
     ...
 }
 ```
@@ -52,7 +52,7 @@ and then adding add the implementation dependency
 <dependency>
     <groupId>com.github.Syncwork-AG</groupId>
     <artifactId>hrworks-api-client-v2</artifactId>
-    <version>[[[tbd]]]</version>
+    <version>[version]</version>
 </dependency>
 ```
 
