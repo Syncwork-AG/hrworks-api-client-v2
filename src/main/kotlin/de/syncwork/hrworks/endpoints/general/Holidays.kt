@@ -1,8 +1,12 @@
+@file:UseSerializers(LocalDateSerializer::class)
+
 package de.syncwork.hrworks.endpoints.general
 
+import de.syncwork.hrworks.core.LocalDateSerializer
 import io.ktor.resources.Resource
-import kotlinx.datetime.LocalDate
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.UseSerializers
+import java.time.LocalDate
 
 @Serializable
 @Resource("holidays")

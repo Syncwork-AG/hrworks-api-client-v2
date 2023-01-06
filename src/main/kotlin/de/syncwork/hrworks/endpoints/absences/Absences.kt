@@ -1,11 +1,14 @@
+@file:UseSerializers(LocalDateSerializer::class)
 @file:Suppress("unused")
 
 package de.syncwork.hrworks.endpoints.absences
 
+import de.syncwork.hrworks.core.LocalDateSerializer
 import io.ktor.resources.*
 import kotlinx.serialization.Serializable
-import kotlinx.datetime.LocalDate
 import kotlinx.serialization.SerialName
+import kotlinx.serialization.UseSerializers
+import java.time.LocalDate
 
 @Serializable
 @Resource("absences")
@@ -13,8 +16,8 @@ data class AbsencesRq @JvmOverloads constructor(
     val beginDate: LocalDate,
     val endDate: LocalDate,
     val persons: List<String> = emptyList(),
-    val usePersonnelNumbers: Boolean = false,
     val interval: IntervalType? = null,
+    val usePersonnelNumbers: Boolean = false,
     val statusFilter: List<StatusFilter> = emptyList()
 ) {
     val count = false

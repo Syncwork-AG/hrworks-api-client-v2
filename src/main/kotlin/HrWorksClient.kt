@@ -1,5 +1,9 @@
 package de.syncwork.hrworks
 
+import de.syncwork.hrworks.core.AuthCredentials
+import de.syncwork.hrworks.core.TokenInfo
+import de.syncwork.hrworks.endpoints.HrWorksBlockingEndpoints
+import de.syncwork.hrworks.endpoints.HrWorksEndpoints
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.engine.java.*
@@ -13,15 +17,12 @@ import io.ktor.client.request.*
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
 import kotlinx.serialization.json.Json
-import de.syncwork.hrworks.core.AuthCredentials
-import de.syncwork.hrworks.core.TokenInfo
-import de.syncwork.hrworks.endpoints.HrWorksBlockingEndpoints
-import de.syncwork.hrworks.endpoints.HrWorksEndpoints
 
 class HrWorksClient @JvmOverloads constructor(
     apiKey: String,
     apiKeySecret: String,
     private val apiEndpoint: String = "api.hrworks.de",
+    loglevel: LogLevel = LogLevel.NONE
 ) : HrWorksEndpoints, HrWorksBlockingEndpoints, AutoCloseable {
     private val credentials = AuthCredentials(apiKey, apiKeySecret)
 
@@ -34,7 +35,7 @@ class HrWorksClient @JvmOverloads constructor(
         }
         install(Logging) {
             logger = Logger.DEFAULT
-            level = LogLevel.ALL // TODO convert to parameter
+            level = loglevel
         }
         install(Resources)
     }
