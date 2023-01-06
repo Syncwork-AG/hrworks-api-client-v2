@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "de.syncwork"
-version = "0.0.1-SNAPSHOT"
+version = "0.0.2"
 
 repositories {
     mavenCentral()
@@ -27,7 +27,6 @@ dependencies {
     implementation("io.ktor:ktor-client-resources:$ktorVersion")
     implementation("io.ktor:ktor-client-logging-jvm:$ktorVersion")
 
-    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
     implementation("ch.qos.logback:logback-classic:1.4.5")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.6.4")
 
@@ -59,7 +58,7 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "de.syncwork"
             artifactId = "hrworks-api-client-v2"
-            version = "0.0.1-SNAPSHOT"
+            version = "0.0.2"
 
             from(components["java"])
         }

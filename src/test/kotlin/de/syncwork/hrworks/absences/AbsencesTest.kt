@@ -5,9 +5,9 @@ import de.syncwork.hrworks.endpoints.absences.AbsencesRq
 import de.syncwork.hrworks.endpoints.absences.LeaveAccountDataRq
 import de.syncwork.hrworks.endpoints.absences.SickLeavesRq
 import kotlinx.coroutines.runBlocking
-import kotlinx.datetime.LocalDate
 import strikt.api.expectThat
 import strikt.assertions.*
+import java.time.LocalDate
 import kotlin.test.Test
 
 class AbsencesTest : AbstractHrWorksTest() {
