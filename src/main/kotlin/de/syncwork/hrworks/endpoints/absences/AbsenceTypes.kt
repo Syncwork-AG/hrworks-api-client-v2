@@ -23,7 +23,7 @@ data class AbsenceType(
     val reducesTimeAccount: Boolean,
     val ignoreVacationBlackout: Boolean,
     val useInMonthPayroll: Boolean,
-    val maxVacationDaysPerYear: Int = 0,
+    val maxVacationDaysPerYear: Double = 0.0,
     val isSubstitutionMandatory: Boolean,
     val reducesTargetWorkingHours: Boolean,
     val color: String,
