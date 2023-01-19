@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "de.syncwork"
-version = "0.0.2"
+version = "0.0.4"
 
 repositories {
     mavenCentral()
@@ -58,7 +58,7 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "de.syncwork"
             artifactId = "hrworks-api-client-v2"
-            version = "0.0.2"
+            version = "0.0.4"
 
             from(components["java"])
         }
