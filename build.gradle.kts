@@ -36,29 +36,36 @@ dependencies {
     implementation(kotlin("reflect"))
 }
 
+val jvmTersion = "11"
 tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions.jvmTarget = jvmTersion
 }
 
 tasks.test {
     useJUnitPlatform()
 }
 
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(jvmTersion))
+    }
+}
+
 tasks {
     compileKotlin {
-        kotlinOptions.jvmTarget = "1.8"
+        kotlinOptions.jvmTarget = jvmTersion
     }
     compileTestKotlin {
-        kotlinOptions.jvmTarget = "1.8"
+        kotlinOptions.jvmTarget = jvmTersion
     }
 }
 
 publishing {
     publications {
         create<MavenPublication>("maven") {
-            groupId = "de.syncwork"
+            groupId = project.group.toString()
             artifactId = "hrworks-api-client-v2"
-            version = "0.0.4"
+            version = project.version.toString()
 
             from(components["java"])
         }
