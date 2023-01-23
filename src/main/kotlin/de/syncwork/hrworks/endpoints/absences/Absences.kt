@@ -55,8 +55,8 @@ data class AbsenceData(
 @Serializable
 data class Absence(
     val type: String,
-    val beginDate: String,
-    val endDate: String,
+    val beginDate: LocalDate,
+    val endDate: LocalDate,
     val isAfternoonHalfDay: Boolean,
     val isForenoonHalfDay: Boolean,
     val name: String,
