@@ -13,7 +13,7 @@ import kotlin.test.Test
 class AbsencesTest : AbstractHrWorksTest() {
     @Test
     fun `response of getAbsences will have the requested person and date boundaries`(): Unit = runBlocking {
-        val testPersons = listOf("1")
+        val testPersons = listOf("190")
         val testBeginDate = LocalDate.parse("2022-01-01")
         val testEndDate = LocalDate.parse("2022-12-31")
         val result = client.getAbsences(
@@ -39,7 +39,7 @@ class AbsencesTest : AbstractHrWorksTest() {
 
     @Test
     fun `response of getLeaveAccountData will the requested person`(): Unit = runBlocking {
-        val testPersons = listOf("1")
+        val testPersons = listOf("190")
         val result = client.getLeaveAccountData(LeaveAccountDataRq(persons = testPersons, usePersonnelNumbers = true))
         expectThat(result).containsKeys(*testPersons.toTypedArray())
     }
@@ -48,7 +48,7 @@ class AbsencesTest : AbstractHrWorksTest() {
     fun `response of getSickLeaves will have the requested person and date boundaries`(): Unit = runBlocking {
         val testBeginDate = LocalDate.parse("2022-01-01")
         val testEndDate = LocalDate.parse("2022-12-31")
-        val testPersons = listOf("1")
+        val testPersons = listOf("190")
         val result = client.getSickLeaves(
             SickLeavesRq(
                 testBeginDate, testEndDate, persons = testPersons, usePersonnelNumbers = true

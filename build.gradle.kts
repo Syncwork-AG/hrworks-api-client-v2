@@ -18,14 +18,13 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
     // ktor
-    val ktorVersion = "2.2.1"
-    implementation("io.ktor:ktor-client-core-jvm:$ktorVersion")
-    implementation("io.ktor:ktor-client-java-jvm:$ktorVersion")
-    implementation("io.ktor:ktor-client-auth-jvm:$ktorVersion")
-    implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
-    implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
-    implementation("io.ktor:ktor-client-resources:$ktorVersion")
-    implementation("io.ktor:ktor-client-logging-jvm:$ktorVersion")
+    implementation("io.ktor:ktor-client-core-jvm:2.3.1")
+    implementation("io.ktor:ktor-client-java-jvm:2.3.1")
+    implementation("io.ktor:ktor-client-auth-jvm:2.3.1")
+    implementation("io.ktor:ktor-client-content-negotiation:2.3.1")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.1")
+    implementation("io.ktor:ktor-client-resources:2.3.1")
+    implementation("io.ktor:ktor-client-logging-jvm:2.3.1")
 
     implementation("ch.qos.logback:logback-classic:1.4.5")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.6.4")

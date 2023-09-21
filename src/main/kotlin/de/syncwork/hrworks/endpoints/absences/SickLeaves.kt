@@ -42,5 +42,5 @@ data class SickLeave(
     val isEndDateHalfDay: Boolean,
     val status: String,
     val workingDays: Float,
-    val substitute: PersonBaseData
+    val substitute: PersonBaseData? = null
 )
