@@ -25,6 +25,8 @@ data class JwtPayload(
     val issuer: String,
     @SerialName("exp")
     val expires: Long,
+    @SerialNamr("nbt")
+    val notBefore: Long,
     @SerialName("iat")
     val issued: Long,
     @SerialName("jti")
