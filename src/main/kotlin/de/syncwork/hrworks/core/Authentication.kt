@@ -2,7 +2,6 @@ package de.syncwork.hrworks.core
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import java.nio.charset.StandardCharsets
 import java.util.Base64
@@ -25,7 +24,7 @@ data class JwtPayload(
     val issuer: String,
     @SerialName("exp")
     val expires: Long,
-    @SerialNamr("nbf")
+    @SerialName("nbf")
     val notBefore: Long,
     @SerialName("iat")
     val issued: Long,
