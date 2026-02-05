@@ -1,0 +1,13 @@
+###
+POST {{baseUrl}}/v2/authentication
+Content-Type: application/json
+
+{
+  "accessKey": "{{accessKey}}",
+  "secretAccessKey": "{{secretAccessKey}}"
+}
+
+> {% client.global.set("token", response.body.token)
+ %}
+
+###

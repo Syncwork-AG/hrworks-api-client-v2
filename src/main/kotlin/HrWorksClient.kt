@@ -16,6 +16,8 @@ import io.ktor.client.plugins.resources.*
 import io.ktor.client.request.*
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlinx.serialization.json.Json
 
 class HrWorksClient @JvmOverloads constructor(
@@ -71,10 +73,18 @@ class HrWorksClient @JvmOverloads constructor(
     }
 
     private var token: TokenInfo? = null
+    private val tokenMutex = Mutex()
 
-    private suspend fun getToken(): TokenInfo = token.let {
-        if (it != null && !it.isExpired()) it
-        else tokenClient.requestToken(credentials)
+    private suspend fun getToken(): TokenInfo = token.let { currentToken ->
+        if (currentToken != null && !currentToken.isExpired()) currentToken
+        else tokenMutex.withLock {
+            val cachedInsideLock = token
+            if (cachedInsideLock != null && !cachedInsideLock.isExpired()) {
+                cachedInsideLock
+            } else {
+                tokenClient.requestToken(credentials).also { token = it }
+            }
+        }
     }
 
     override fun close(): Unit = client.close()

@@ -8,7 +8,11 @@ import java.util.Base64
 
 @Serializable
 data class TokenInfo(@SerialName("token") val encodedToken: String) {
-    val payload = Json.decodeFromString<JwtPayload>(
+    companion object {
+        private val tokenJson = Json { ignoreUnknownKeys = true }
+    }
+
+    val payload = tokenJson.decodeFromString<JwtPayload>(
         String(
             Base64.getDecoder().decode(encodedToken.split(".")[1]),
             StandardCharsets.UTF_8

@@ -18,7 +18,7 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
     // ktor
-    implementation("io.ktor:ktor-client-core-jvm:2.3.1")
+    implementation("io.ktor:ktor-client-core-jvm:2.3.13")
     implementation("io.ktor:ktor-client-java-jvm:2.3.1")
     implementation("io.ktor:ktor-client-auth-jvm:2.3.1")
     implementation("io.ktor:ktor-client-content-negotiation:2.3.1")
@@ -26,12 +26,12 @@ dependencies {
     implementation("io.ktor:ktor-client-resources:2.3.1")
     implementation("io.ktor:ktor-client-logging-jvm:2.3.1")
 
-    implementation("ch.qos.logback:logback-classic:1.4.5")
+    implementation("ch.qos.logback:logback-classic:1.5.25")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.6.4")
 
     testImplementation(kotlin("test"))
     testImplementation("io.strikt:strikt-core:0.34.1")
-    testImplementation("org.assertj:assertj-core:3.23.1")
+    testImplementation("org.assertj:assertj-core:3.27.7")
     implementation(kotlin("reflect"))
 }
 
