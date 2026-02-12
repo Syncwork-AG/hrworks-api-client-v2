@@ -5,17 +5,20 @@ import de.syncwork.hrworks.endpoints.absences.AbsencesRq
 import de.syncwork.hrworks.endpoints.absences.LeaveAccountDataRq
 import de.syncwork.hrworks.endpoints.absences.SickLeavesRq
 import kotlinx.coroutines.runBlocking
+import org.junit.jupiter.api.BeforeAll
 import strikt.api.expectThat
 import strikt.assertions.*
 import java.time.LocalDate
+import java.time.YearMonth
 import kotlin.test.Test
 
 class AbsencesTest : AbstractHrWorksTest() {
+
     @Test
     fun `response of getAbsences will have the requested person and date boundaries`(): Unit = runBlocking {
         val testPersons = listOf("190")
-        val testBeginDate = LocalDate.parse("2022-01-01")
-        val testEndDate = LocalDate.parse("2022-12-31")
+        val testBeginDate = LocalDate.now().withDayOfYear(1)
+        val testEndDate = LocalDate.now().withMonth(12).withDayOfMonth(31)
         val result = client.getAbsences(
             AbsencesRq(
                 testBeginDate, testEndDate, persons = testPersons, usePersonnelNumbers = true

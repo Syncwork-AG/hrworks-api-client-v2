@@ -19,7 +19,6 @@ data class SickLeaveType(
     val name: String,
     val key: String,
     val isActive: Boolean,
-    val color: String,
     val isAdminOnly: Boolean,
     val isPublic: Boolean,
     val isSicknessOfChild: Boolean,

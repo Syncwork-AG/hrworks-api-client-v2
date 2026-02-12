@@ -1,0 +1,9 @@
+import Auth.http
+
+###
+run #Auth and get token
+
+### GET request to example server
+GET {{baseUrl}}/v2/persons
+Authorization: Bearer {{token}}
+Accept: application/json

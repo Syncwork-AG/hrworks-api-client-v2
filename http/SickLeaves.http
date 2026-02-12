@@ -1,0 +1,13 @@
+import Auth.http
+
+###
+run #Auth and get token
+
+### GET request to example server
+# @no-auto-encoding
+GET {{baseUrl}}/v2/sick-leaves
+    ?persons=[190]
+    &beginDate=2026-01-01&endDate=2026-12-31
+    &usePersonnelNumbers=true
+Authorization: Bearer {{token}}
+###

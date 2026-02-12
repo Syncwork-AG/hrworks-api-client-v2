@@ -12,7 +12,7 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 @OptIn(ExperimentalSerializationApi::class)
-@Serializer(forClass = LocalDate::class)
+//@Serializer(forClass = LocalDate::class)
 object LocalDateSerializer : KSerializer<LocalDate> {
     override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("LocalDate", PrimitiveKind.STRING)
 

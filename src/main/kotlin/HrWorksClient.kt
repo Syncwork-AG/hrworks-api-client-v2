@@ -6,6 +6,7 @@ import de.syncwork.hrworks.endpoints.HrWorksBlockingEndpoints
 import de.syncwork.hrworks.endpoints.HrWorksEndpoints
 import io.ktor.client.*
 import io.ktor.client.call.*
+import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.engine.java.*
 import io.ktor.client.plugins.*
 import io.ktor.client.plugins.auth.*
@@ -24,15 +25,17 @@ class HrWorksClient @JvmOverloads constructor(
     apiKey: String,
     apiKeySecret: String,
     private val apiEndpoint: String = "api.hrworks.de",
-    loglevel: LogLevel = LogLevel.NONE
+    loglevel: LogLevel = LogLevel.NONE,
+    clientEngine: HttpClientEngine = Java.create()
 ) : HrWorksEndpoints, HrWorksBlockingEndpoints, AutoCloseable {
     private val credentials = AuthCredentials(apiKey, apiKeySecret)
 
-    override val client = HttpClient(Java) {
+    override val client = HttpClient(clientEngine) {
         sharedClientConfig()
         install(Auth) {
             bearer {
                 loadTokens { BearerTokens(getToken().encodedToken, "") }
+                refreshTokens { BearerTokens(tokenClient.requestTokenAsString(credentials), "") }
             }
         }
         install(Logging) {
@@ -42,11 +45,11 @@ class HrWorksClient @JvmOverloads constructor(
         install(Resources)
     }
 
-    private val tokenClient = HttpClient(Java) {
+    private val tokenClient = HttpClient(clientEngine) {
         sharedClientConfig()
     }
 
-    private fun HttpClientConfig<JavaHttpConfig>.sharedClientConfig() {
+    private fun HttpClientConfig<*>.sharedClientConfig() {
         expectSuccess = true
         defaultRequest {
             url(
@@ -69,6 +72,9 @@ class HrWorksClient @JvmOverloads constructor(
     }
 
     private suspend fun HttpClient.requestToken(credentials: AuthCredentials): TokenInfo {
+        return post("authentication") { setBody(credentials) }.body()
+    }
+    private suspend fun HttpClient.requestTokenAsString(credentials: AuthCredentials): String {
         return post("authentication") { setBody(credentials) }.body()
     }
 
