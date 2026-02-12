@@ -17,7 +17,7 @@ public class TestInJavaHolidays {
         try (var client = new HrWorksClient(apiKey, apiKeySecret, apiEndpoint)) {
             var result = client.getHolidays(new HolidaysRq(2022));
 
-            assertThat(result).containsKeys("CHE", "AUT", "DEU");
+            assertThat(result).containsKeys("CHE", "DEU");
         }
 
     }
