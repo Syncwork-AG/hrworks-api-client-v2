@@ -11,6 +11,7 @@ version = "0.0.12"
 repositories {
     mavenCentral()
     maven { url = uri("https://maven.pkg.jetbrains.space/public/p/ktor/eap") }
+    maven { url = uri("https://jitpack.io") }
 }
 
 val ktorVersion = "3.4.0"
@@ -34,6 +35,10 @@ dependencies {
     testImplementation("io.strikt:strikt-core:0.34.1")
     testImplementation("org.assertj:assertj-core:3.27.7")
     implementation(kotlin("reflect"))
+}
+
+kotlin {
+    jvmToolchain(17)
 }
 
 tasks.test {
