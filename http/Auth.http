@@ -1,4 +1,4 @@
-###
+### Auth and get token
 POST {{baseUrl}}/v2/authentication
 Content-Type: application/json
 
