@@ -34,6 +34,7 @@ class HrWorksClient @JvmOverloads constructor(
         sharedClientConfig()
         install(Auth) {
             bearer {
+                cacheTokens = false
                 loadTokens { BearerTokens(getToken().encodedToken, "") }
                 refreshTokens { BearerTokens(tokenClient.requestTokenAsString(credentials), "") }
             }

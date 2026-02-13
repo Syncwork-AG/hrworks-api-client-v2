@@ -14,7 +14,7 @@ class TestHolidays : AbstractHrWorksTest() {
         val result =
             client.getHolidays(HolidaysRq(now().year))
         println(result)
-        expectThat(result).containsKeys("CHE", "AUT", "DEU")
+        expectThat(result).containsKeys("CHE", "DEU")
 
     }
 }

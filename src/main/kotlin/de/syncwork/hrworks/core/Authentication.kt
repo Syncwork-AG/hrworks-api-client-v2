@@ -21,23 +21,13 @@ data class TokenInfo(@SerialName("token") val encodedToken: String) {
         )
     }
 
-    fun isExpired(): Boolean = payload.expires < (System.currentTimeMillis() / 1000)
+    fun isExpired(): Boolean = payload.expires < ((System.currentTimeMillis() / 1000) + 60)
 }
 
 @Serializable
 data class JwtPayload(
-    @SerialName("iss")
-    val issuer: String,
     @SerialName("exp")
-    val expires: Long,
-    @SerialName("nbf")
-    val notBefore: Long,
-    @SerialName("iat")
-    val issued: Long,
-    @SerialName("jti")
-    val jwtId: String,
-    @SerialName("accessKeyId")
-    val accessKey: String,
+    val expires: Long
 )
 
 @Serializable

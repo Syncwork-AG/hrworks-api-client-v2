@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     java
     kotlin("jvm") version "2.3.0"
@@ -8,7 +6,7 @@ plugins {
 }
 
 group = "de.syncwork"
-version = "0.0.10"
+version = "0.0.12"
 
 repositories {
     mavenCentral()
@@ -38,29 +36,9 @@ dependencies {
     implementation(kotlin("reflect"))
 }
 
-val jvmTersion = "21"
-tasks.withType<KotlinCompile> {
-//    kotlinOptions.jvmTarget = jvmTersion
-}
-
 tasks.test {
     useJUnitPlatform()
 }
-
-//java {
-//    toolchain {
-//        languageVersion.set(JavaLanguageVersion.of(jvmTersion))
-//    }
-//}
-
-//tasks {
-//    compileKotlin {
-//        kotlinOptions.jvmTarget = jvmTersion
-//    }
-//    compileTestKotlin {
-//        kotlinOptions.jvmTarget = jvmTersion
-//    }
-//}
 
 publishing {
     publications {

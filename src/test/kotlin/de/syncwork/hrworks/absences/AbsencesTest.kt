@@ -5,11 +5,9 @@ import de.syncwork.hrworks.endpoints.absences.AbsencesRq
 import de.syncwork.hrworks.endpoints.absences.LeaveAccountDataRq
 import de.syncwork.hrworks.endpoints.absences.SickLeavesRq
 import kotlinx.coroutines.runBlocking
-import org.junit.jupiter.api.BeforeAll
 import strikt.api.expectThat
 import strikt.assertions.*
 import java.time.LocalDate
-import java.time.YearMonth
 import kotlin.test.Test
 
 class AbsencesTest : AbstractHrWorksTest() {
@@ -19,6 +17,7 @@ class AbsencesTest : AbstractHrWorksTest() {
         val testPersons = listOf("190")
         val testBeginDate = LocalDate.now().withDayOfYear(1)
         val testEndDate = LocalDate.now().withMonth(12).withDayOfMonth(31)
+//        delay(Duration.ofMinutes(15))
         val result = client.getAbsences(
             AbsencesRq(
                 testBeginDate, testEndDate, persons = testPersons, usePersonnelNumbers = true
@@ -36,6 +35,7 @@ class AbsencesTest : AbstractHrWorksTest() {
 
     @Test
     fun `response of getAbsenceTypes will not be empty`(): Unit = runBlocking {
+//        delay(Duration.ofMinutes(15))
         val result = client.getAbsenceTypes()
         expectThat(result.absenceTypes).isNotEmpty()
     }
@@ -43,6 +43,7 @@ class AbsencesTest : AbstractHrWorksTest() {
     @Test
     fun `response of getLeaveAccountData will the requested person`(): Unit = runBlocking {
         val testPersons = listOf("190")
+//        delay(Duration.ofMinutes(15))
         val result = client.getLeaveAccountData(LeaveAccountDataRq(persons = testPersons, usePersonnelNumbers = true))
         expectThat(result).containsKeys(*testPersons.toTypedArray())
     }
@@ -52,6 +53,7 @@ class AbsencesTest : AbstractHrWorksTest() {
         val testBeginDate = LocalDate.parse("2022-01-01")
         val testEndDate = LocalDate.parse("2022-12-31")
         val testPersons = listOf("190")
+//        delay(Duration.ofMinutes(15))
         val result = client.getSickLeaves(
             SickLeavesRq(
                 testBeginDate, testEndDate, persons = testPersons, usePersonnelNumbers = true
@@ -69,6 +71,7 @@ class AbsencesTest : AbstractHrWorksTest() {
 
     @Test
     fun `response of getSickLeaveTypes will not be empty`(): Unit = runBlocking {
+//        delay(Duration.ofMinutes(15))
         val result = client.getSickLeaveTypes()
         expectThat(result.sickLeaveTypes).isNotEmpty()
     }
