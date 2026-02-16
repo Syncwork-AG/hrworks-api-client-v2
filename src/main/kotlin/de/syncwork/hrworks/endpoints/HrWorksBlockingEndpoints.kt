@@ -2,9 +2,8 @@ package de.syncwork.hrworks.endpoints
 
 import de.syncwork.hrworks.endpoints.absences.*
 import de.syncwork.hrworks.endpoints.general.HolidaysRq
+import de.syncwork.hrworks.endpoints.general.OrganizationUnitsRq
 import de.syncwork.hrworks.endpoints.persons.PersonsRq
-import io.ktor.client.call.*
-import io.ktor.client.plugins.resources.*
 import kotlinx.coroutines.runBlocking
 
 /**
@@ -45,4 +44,17 @@ interface HrWorksBlockingEndpoints : HrWorksEndpoints {
 
     @JvmName("getPersons")
     fun getBlockingPersons() = runBlocking { getPersons() }
+
+    @JvmName("getOrganizationUnits")
+    fun getBlockingOrganizationUnits(rq: OrganizationUnitsRq) = runBlocking { getOrganizationUnits(rq) }
+
+    @JvmName("getOrganizationUnits")
+    fun getBlockingOrganizationUnits() = runBlocking { getOrganizationUnits() }
+
+    @JvmName("getOrganizationUnits")
+    fun getBlockingOrganizationUnits(rq: OrganizationUnitsRq.Number) = runBlocking { getOrganizationUnits(rq) }
+
+    @JvmName("getOrganizationUnits")
+    fun getBlockingOrganizationUnits(rq: OrganizationUnitsRq.Number.PresentPersons) =
+        runBlocking { getOrganizationUnits(rq) }
 }

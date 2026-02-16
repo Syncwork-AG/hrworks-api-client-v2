@@ -56,7 +56,7 @@ and then adding add the implementation dependency
 </dependency>
 ```
 
-## Usage in Kotlin
+[//]: # (## Usage in Kotlin)
 
 [//]: # (TODO Beschreibung ergänzen)
 [//]: # (``` kotlin)
@@ -83,7 +83,7 @@ and then adding add the implementation dependency
 
 [//]: # (```)
 
-## Usage in Groovy
+[//]: # (## Usage in Groovy)
 
 [//]: # (TODO Beschreibung ergänzen)
 [//]: # (```groovy)
@@ -112,36 +112,23 @@ and then adding add the implementation dependency
 
 ## Usage in Java
 
-[//]: # (TODO Beschreibung ergänzen)
-[//]: # (```java)
+```java
+import de.syncwork.hrworks.HrWorksClient;
+import de.syncwork.hrworks.endpoints.general.HolidaysRq;
+import java.util.Map;
 
-[//]: # (import com.aoe.hrworks.HrWorksClient;)
+public class Sample {
+    static void main(String[] args) {
+        try (HrWorksClient client = new HrWorksClient("yourApiKey", "yourApiKeySecret")) {
+            // Die Methode getHolidays ist in Java als blockierende Version verfügbar
+            var holidays = client.getHolidays(new HolidaysRq(2024));
+            System.out.println(holidays);
+        }
+    }
+}
+```
 
-[//]: # (import com.aoe.hrworks.HrWorksClientBuilder;)
-
-[//]: # (public class Sample {)
-
-[//]: # (    public static void main&#40;String[] args&#41;{)
-
-[//]: # (        HrWorksClient client = HrWorksClientBuilder.INSTANCE)
-
-[//]: # (                .buildClient&#40;"key", "secret"&#41;;)
-
-[//]: # (        client.getAllActivePersons&#40;&#41;)
-
-[//]: # (                .blockingGet&#40;&#41;)
-
-[//]: # (                .forEach&#40;&#40;k,v&#41; -> )
-
-[//]: # (                System.out.print&#40;String.format&#40;"Key:%s Value:%s",k,v&#41;&#41;&#41;;)
-
-[//]: # (    })
-
-[//]: # (})
-
-[//]: # (```)
-
-## Usage in Scala
+[//]: # (## Usage in Scala)
 
 [//]: # (TODO Beschreibung ergänzen)
 [//]: # (```scala)

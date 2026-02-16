@@ -17,7 +17,7 @@ repositories {
 val ktorVersion = "3.4.0"
 
 dependencies {
-    implementation(kotlin("stdlib-jdk8"))
+    implementation(kotlin("stdlib"))
     // ktor
     implementation("io.ktor:ktor-client-core-jvm:$ktorVersion")
     implementation("io.ktor:ktor-client-java-jvm:$ktorVersion")
@@ -28,7 +28,7 @@ dependencies {
     implementation("io.ktor:ktor-client-logging-jvm:$ktorVersion")
 
     implementation("ch.qos.logback:logback-classic:1.5.25")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.6.4")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
 
     testImplementation(kotlin("test"))
     testImplementation("io.ktor:ktor-client-mock:$ktorVersion")
@@ -39,6 +39,11 @@ dependencies {
 
 kotlin {
     jvmToolchain(17)
+}
+
+java {
+    withSourcesJar()
+    withJavadocJar()
 }
 
 tasks.test {
